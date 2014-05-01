@@ -1,0 +1,2 @@
+<?php $graburl=$_GET['id'];?>
+<embed type="application/x-shockwave-flash" flashvars="audioUrl=$cms_url/documents/doc.php?id=<?php print $graburl;?>" src="http://www.google.com/reader/ui/3523697345-audio-player.swf" width="400" height="27" quality="best"></embed>

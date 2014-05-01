@@ -1,0 +1,8 @@
+DirectoryIndex page.php
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule !(.*)/$ %{REQUEST_URI}/ [L,NC,R=301]
+RewriteRule \.(js|css|jpe?g|gif|png|bmp|ico|php)$ - [L,NC]
+RewriteRule . page.php [QSA,L] 

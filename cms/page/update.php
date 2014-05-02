@@ -83,7 +83,7 @@ if (mysql_errno () != 0) {
 } else {
 	$contentsuccess = TRUE;
 }
-?><div id="modalcontent"><?php
+?><div id="modalcontent" class="w500"><?php
 
 if ($contentsuccess) {
 /*

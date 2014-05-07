@@ -11,11 +11,7 @@ These are defined in cms_vre
 $admin_email="webmin@virtualtextileproject.org";
 $site_name="Virtual Textile Project";
 */
-$db_name="virtualtextile_cms";
-$db_user="virtualtextiles";
-$db_passwd="williammorris";
-$db_port=3306;
-$thisabspath="/Users/virtualtextileproject/Sites";
+include("dbconfig.php");
 $thisincludespath="/Users/virtualtextileproject/Sites/includes";
 set_include_path(get_include_path() . PATH_SEPARATOR . $thisabspath. PATH_SEPARATOR . $thisincludespath);
 

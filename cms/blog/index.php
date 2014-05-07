@@ -1,4 +1,9 @@
-<?php $thisabspath = "/Users/virtualtextileproject/Sites";
+<?php /*blog handling form - modal at the moment, can be altered for page content if needed (strip http headers if include)
+wysihtml5 plug used here - loads at appropriate points re wysihtml5 documentation. wrap attr call after load necessary for wrapping
+jQuery posts have to move to .done() .always() .fail() rather than current syntax
+*/
+
+$thisabspath = "/Users/virtualtextileproject/Sites";
 define("ABSPATH", dirname(__FILE__) . '/');
 include (ABSPATH . "../../includes/phpheader.php");
 header("Content-Type: text/html; charset=utf-8");
@@ -72,9 +77,11 @@ function addblog(){
 	function(data){
 		if(data['status']=='ok'){
 			alert('Blog Added!');
+			//prepend new item to list on main page
 			$('#bloglist').prepend(
 					$('<tr id="'+data['id']+'"><td><a href="/blog/?id='+data['id']+'" id="blogtitlelink'+data['id']+'">'+data['name']+'</a></td><td><a class="popmodal" href="/cms/blog/index.php?j=e&id='+data['id']+'"><img src="/frame/images/icons/search.png" class="icon"></a></td><td><a class="popmodal" href="/cms/blog/index.php?j=d&id='+data['id']+'"><img src="/frame/images/icons/delete.png" class="icon"></a></td></tr>')
 					);
+			//popmodal new links after new elements
 			$('.popmodal').magnificPopup({
 				  type: 'ajax'
 			});
@@ -185,6 +192,7 @@ function deleteblog(){
 		if(data['status']=='ok'){
 			alert('Blog Deleted!');
 		}
+		//need call to remove item from list on main page.
 	});
 	$.magnificPopup.close();
 }
@@ -196,6 +204,7 @@ function deleteblog(){
 		$('.popmodal').magnificPopup({
 			  type: 'ajax'
 		});
+		//publication status notification in modal
 		notepubstatus();
 		function notepubstatus(){
 		var pubstatus=$('#published').val();

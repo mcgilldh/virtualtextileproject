@@ -1,4 +1,9 @@
-<?php //error_reporting(E_ALL);
+<?php /*page handling form for adds and edits
+* needs text-diff fix
+*
+*/
+
+//error_reporting(E_ALL);
 //ini_set('display_errors', TRUE);
 define("ABSPATH", dirname(__FILE__) . '/');
 include (ABSPATH . "/../../includes/phpheader.php");
@@ -41,6 +46,7 @@ $thisrev = chkpage($_GET['id']);
 	$(function() {
 		$('#pageadmin').tabs();
 	});
+	//fix problem with javascript injection tags on load etc - reconcile with $(function()... below
 	function fixscripttags() {
 		var fixtext = $('#pagecontents').val();
 		var fix1 = fixtext.replace(/scr@%ipt/g, "script");
@@ -245,6 +251,7 @@ echo $renderer->render($diff);
 
 	if ($_GET ['n'] != "n") {
 	//if ($_SESSION ['profile'] >= 4) {
+	//modal box history back and forth - likely can remove this
 		$_SESSION ['modalboxhistory'] = "http://" . $_SERVER ['HTTP_HOST'] . $_SERVER ['REQUEST_URI'];
 	?>
 	<?php //}?>

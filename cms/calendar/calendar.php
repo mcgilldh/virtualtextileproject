@@ -1,4 +1,11 @@
-<?php $thisabspath = "/Users/virtualtextileproject/Sites/workingcopy";
+<?php /*calendar entry page
+if we construct a query builder, this page should be revised entirely.
+
+checks for user, could check for profile as well, if we need it. Clear up path, using htaccess setting for includes?
+Update to mysqli from mysql, procedural or PDO?
+
+*/
+$thisabspath = "/Users/virtualtextileproject/Sites/workingcopy";
 define("ABSPATH", dirname(__FILE__) . '/');
 include (ABSPATH . "../../includes/phpheader.php");
 if($_SESSION['user']){
@@ -15,6 +22,8 @@ if($_SESSION['user']){
 
 	$job=$_GET['j'];
 	if(empty($_POST['calendarid'])){
+		//if null, can only be add - otherwise fail
+		$job='a';
 		$calendarid="NULL";
 	}else{
 		$calendarid=$_POST['calendarid'];
@@ -76,6 +85,7 @@ if($_SESSION['user']){
 		$calendartimezone = "'" . mysql_real_escape_string($_POST['timezone']) . "'";
 	}
 
+	//create hash value of title for url matching
 	$titlehash=sha1(preg_replace("/[^a-z0-9]/i", "-", trim($_POST['calendartitle'],"/ ")));
 	$calendarmadeby="'".$_SESSION['user']."'";
 	$calendarmadeon="'".date('Y-m-d H:i:s')."'";
@@ -114,6 +124,7 @@ if($_SESSION['user']){
 	}else{
 		if($job=='a'){
 		$calendarid=grabnewestid('cms_calendar','calendarid');
+		/*replace with mysql_last_id*/
 		}
 		if($calendarid){
 			$showcalendar= array();
@@ -124,6 +135,7 @@ if($_SESSION['user']){
 			$status=TRUE;
 		}
 	}
+	/*return results as json for handling on front end*/
 	print json_encode($showcalendar);
 }
 ?>

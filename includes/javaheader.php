@@ -3,8 +3,8 @@
 <script type="text/javascript" src="<?php echo $cms_url; ?>/frame/js/jquery-timepicker/jquery.ui.timepicker.js"></script>
 <script type="text/javascript" src="<?php echo $cms_url; ?>/frame/js/isotope/jquery.isotope.min.js"></script>
 <script type="text/javascript" src="<?php echo $cms_url; ?>/frame/js/Magnific-Popup/jquery.magnific-popup.min.js"></script>
+<?php //autocomplete library?>
 <script type="text/javascript" src="<?php echo $cms_url; ?>/frame/js/loopj-jquery-tokeninput/src/jquery.tokeninput.js"></script>
-<script type="text/javascript" src="<?php echo $cms_url; ?>/frame/js/vtp/vtp.js"></script>
 <script type="text/javascript">
 $.ajaxSetup({
 		   type: "POST",
@@ -46,6 +46,10 @@ function maketimepick(){
 	$(".timepicker" ).timepicker();
 }
 
+
+/************************************isotope calls*******************************
+ * need revising, and tightening up for VTP
+ */
 
 var collectiongrabstart=0;
 //Workbench functions

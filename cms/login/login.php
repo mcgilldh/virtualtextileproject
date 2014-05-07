@@ -101,6 +101,7 @@ if (!empty($_POST['user']) && !empty($_POST['password'])) {
 //Is this a home page?
 
 //What is this?
+/*user interview for settings etc.*/
 					/*
 					if($userinterview==0){
 						header("Location: ".$cms_url."/account/interview/");
@@ -118,7 +119,7 @@ if (!empty($_POST['user']) && !empty($_POST['password'])) {
 			if(strtotime($row['pwddate'])<=strtotime('2013-07-01')){
 				$processcase="renew_password";
 			}
-			//If we don't agree, fail.
+			//If we don't agree with the polices governing the website, fail.
 			if($row['agree']==0 && $row['lockuser']==0){
 				$processcase="agree";
 			}
@@ -134,6 +135,7 @@ if (!empty($_POST['user']) && !empty($_POST['password'])) {
 	$authenticate=FALSE;
 }
 
+//redirections as needed for outcomes
 switch($postinfo){
 	case "empty":
 		if(chkforquerystring($s)){

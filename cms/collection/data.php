@@ -1,4 +1,9 @@
-<?php $thisabspath = "/Users/virtualtextileproject/Sites";
+<?php /*generate html blocks for isotope container. Currently barely functional - needs complete overhaul*/
+
+//error_reporting(E_ALL);
+//ini_set('display_errors', TRUE);
+
+$thisabspath = "/Users/virtualtextileproject/Sites";
 define("ABSPATH", dirname(__FILE__) . '/');
 include (ABSPATH . "../../includes/phpheader.php");
 
@@ -305,6 +310,7 @@ if($_POST['g']=='yes'){
 }
 }*/
 
+	/* not sure...
 $types=array('cotton','linen','silk','wool','polyester','synthetic_blend','natural_blend','other');
 $images=array('Morris_African_Marigold_printed_textile_1876.png','RB_C001_0001000001_1_GR_CR_REDUX_60.png','RB_C001_0001000002_1_GR_CR_REDEX_60.png','RB_C001_0001000008_CR2.png');
 for($i=0;$i<100;$i++){
@@ -312,5 +318,5 @@ for($i=0;$i<100;$i++){
 	$thisdate = date("Y-m-d H:i:s",$int);
 	$type=array_rand($types);
 	$image=array_rand($images);
-?><?php }?>
+?><?php } */?>
 

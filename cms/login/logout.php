@@ -1,4 +1,5 @@
-<?php if($_GET['p']=="h"){
+<?php /*logout handling. not sure if LL.2-6 are needed. chkexists checks for page along with profile version - if 404 should go to / not 404 or whatever error*/
+if($_GET['p']=="h"){
 	$pagetogo=$cms_url;
 }else{
 	$pagetogo=urldecode($_GET['p']);

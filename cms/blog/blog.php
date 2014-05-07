@@ -1,4 +1,12 @@
-<?php $thisabspath = "/Users/virtualtextileproject/Sites";
+<?php /* Blog entry logic page. Needs clearing up. cleancurly traps microsoft single and double curly apostrophes, and turns them into usual UTF8 equivalents. see /includes/functions.php
+if we construct a query builder, this page should be revised entirely.
+
+checks for user, could check for profile as well, if we need it. Clear up path, using htaccess setting for includes?
+Update to mysqli from mysql, procedural or PDO?
+
+*/
+
+$thisabspath = "/Users/virtualtextileproject/Sites";
 define("ABSPATH", dirname(__FILE__) . '/');
 include (ABSPATH . "../../includes/phpheader.php");
 if($_SESSION['user']){
@@ -10,11 +18,15 @@ if($_SESSION['user']){
 	// HTTP/1.1
 	header("Pragma: no-cache");
 	// NO CACHE
+
 	//error_reporting(E_ALL);
 	//ini_set('display_errors', TRUE);
 
 	$job=$_GET['j'];
+
 	if(empty($_POST['blogid'])){
+		//if null, can only be add - otherwise fail
+		$job='a';
 		$blogid="NULL";
 	}else{
 		$blogid=$_POST['blogid'];
@@ -49,6 +61,7 @@ if($_SESSION['user']){
 		$blogaccess=$_POST['blogaccess'];
 	}
 
+	//create hash value of title for url matching
 	$titlehash=preg_replace("/[^a-z0-9]/i", "-", trim($_POST['blogtitle'],"/ "));
 
 if (empty($_POST['blogdate'])) {
@@ -59,7 +72,7 @@ if (empty($_POST['blogdate'])) {
 
 	$blogmadeby="'".$_SESSION['user']."'";
 
-
+/* a=add, e=edit, d=delete*/
 	switch($job){
 		case "a":
 			if($_SESSION['profile']>1){
@@ -90,6 +103,7 @@ if (empty($_POST['blogdate'])) {
 		$showblog['status']="fail";
 	}else{
 		$blogid=grabnewestid('cms_blog','blogid');
+		/*replace with mysql_last_id*/
 		if($blogid){
 			$showblog= array();
 			$showblog['status']="ok";
@@ -98,6 +112,7 @@ if (empty($_POST['blogdate'])) {
 			$status=TRUE;
 		}
 	}
+	/*return results as json for handling on front end*/
 	print json_encode($showblog);
 }
 ?>

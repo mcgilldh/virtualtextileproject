@@ -1,4 +1,8 @@
-<?php $thisabspath = "/Users/virtualtextileproject/Sites/workingcopy";
+<?php /*calendar handling form - modal at the moment, can be altered for page content if needed (strip http headers if include)
+jQuery posts have to move to .done() .always() .fail() rather than current syntax
+*/
+
+$thisabspath = "/Users/virtualtextileproject/Sites/workingcopy";
 define("ABSPATH", dirname(__FILE__) . '/');
 include (ABSPATH . "../../includes/phpheader.php");
 header("Content-Type: text/html; charset=utf-8");
@@ -34,7 +38,8 @@ while($getcalendartyperows=mysql_fetch_assoc($getcalendartypes)){?>
 <tr><td>Start Date:</td><td><input type="text" name="calendarstartdate" class="text w100 datepicker"/></td><td>Time:</td><td><input type="text" name="calendarstarttime" class="text w100 timepicker"/></td></tr>
 <tr><td>End Date:</td><td><input type="text" name="calendarenddate" class="text w100 datepicker"/></td><td>Time:</td><td><input type="text" name="calendarendtime" class="text w100 timepicker"/></td></tr>
 <tr><td>Timezone:</td><td colspan="3"><select name="timezone" id="timezone" class="text">
-<?php static $regions = array(
+<?php //cull necessary timezones from the following, and map them to north america, europe, asia?
+static $regions = array(
     'Africa' => DateTimeZone::AFRICA,
     'America' => DateTimeZone::AMERICA,
     'Asia' => DateTimeZone::ASIA,
@@ -87,9 +92,11 @@ function addcalendar(){
 	function(data){
 		if(data['status']=='ok'){
 			alert('Calendar Event Added!');
+			//prepend new item to list on main page
 			$('#calendarlist').prepend(
 					$('<tr id="calendar'+data['id']+'"><td class="w200" id="calendardate'+data['id']+'">'+data['date']+'</td><td><a href="/calendar/?id='+data['id']+'" id="calendartitlelink'+data['id']+'">'+data['name']+'</a></td><td><a class="popmodal" href="/cms/calendar/index.php?j=e&id='+data['id']+'"><img src="/frame/images/icons/search.png" class="icon"></a></td><td><a class="popmodal" href="/cms/calendar/index.php?j=d&id='+data['id']+'"><img src="/frame/images/icons/delete.png" class="icon"></a></td></tr>')
 					);
+			//popmodal new links after new elements
 			$('.popmodal').magnificPopup({
 				  type: 'ajax'
 			});
@@ -223,6 +230,7 @@ function deletecalendar(){
 		if(data['status']=='ok'){
 			alert('Calendar Event Deleted!');
 		}
+		//need call to remove item from list on main page.
 	});
 	$.magnificPopup.close();
 }
@@ -234,6 +242,7 @@ function deletecalendar(){
 		$('.popmodal').magnificPopup({
 			  type: 'ajax'
 		});
+		//publication status notification in modal
 		notepubstatus();
 		function notepubstatus(){
 		var pubstatus=$('#published').val();

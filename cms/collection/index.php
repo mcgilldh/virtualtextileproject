@@ -31,9 +31,11 @@ function addcollection(){
 	function(data){
 		if(data['status']=='ok'){
 			alert('Collection Added!');
+			//prepend new item to list on main page
 			$('#collectionlist').prepend(
 					$('<tr id="collection'+data['id']+'"><td class="w200" id="collectiondate'+data['id']+'">'+data['date']+'</td><td><a href="/collection/?id='+data['id']+'" id="collectionnamelink'+data['id']+'">'+data['name']+'</a></td><td><a class="popmodal" href="/cms/collection/index.php?j=e&id='+data['id']+'"><img src="/frame/images/icons/search.png" class="icon"></a></td><td><a class="popmodal" href="/cms/collection/index.php?j=d&id='+data['id']+'"><img src="/frame/images/icons/delete.png" class="icon"></a></td></tr>')
 					);
+			//popmodal new links after new elements
 			$('.popmodal').magnificPopup({
 				  type: 'ajax'
 			});
@@ -88,6 +90,7 @@ function deletecollection(){
 		if(data['status']=='ok'){
 			alert('Collection Deleted!');
 		}
+		//need call to remove item from list on main page.
 	});
 	$.magnificPopup.close();
 }

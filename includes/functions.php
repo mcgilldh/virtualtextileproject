@@ -1,4 +1,13 @@
 <?php /*
+* this page requires complete revision and trimming. many functions do NOT pertain to this site. need the following:
+* querybuilder - grabinfo() work?
+*
+*
+* bottom contains utility functions drawn from online libraries / code snippets etc.
+*
+
+
+
 FULL LIST of FUNCTIONs
 ******************************Content Management Functions*************************************
 
@@ -103,7 +112,7 @@ END OF LIST
 
 
 //THESE FUNCTIONS SHOULD BE SORTED AS PER YOUR NEW SYSTEM
-//Grab results from any table using simple query
+//Grab results from any table using simple query, return as array with set number of values, or all.
 function grabinfo($table,$idkey,$id,$n=false){
 	if(!is_numeric($id)){
 		$id="'".mysql_real_escape_string($id)."'";
@@ -132,6 +141,8 @@ function grabinfo($table,$idkey,$id,$n=false){
 	}
 }
 
+//Likely can get rid of this for mysql_last_id();
+
 function grabnewestid($table,$idkey){
 	$grabsql="select max(".$idkey.") as newid from ".$table." limit 0,1";
 	$grabinfo=mysql_query($grabsql);
@@ -143,6 +154,7 @@ function grabnewestid($table,$idkey){
 	}
 }
 
+//find create a comment wall drawing on makecomment();
 function makewall($cf,$cfi,$n='10'){
 	$sql="select distinct commentid from comments where commentfortype='".$cf."' and commentforid=".$cfi." order by commentmadeon desc limit 0,".$n;
 	$getcomments=mysql_query($sql);

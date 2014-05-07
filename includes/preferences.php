@@ -1,4 +1,4 @@
-<?php
+<?php /*load user preferences - not in use at the moment. merge with phpheader.php / login when needed?*/
 $userlogin = $_SESSION ['user'];
 $userpwd = $_SESSION ['password'];
 if ($userlogin != "" && (! empty ( $userlogin ))) {

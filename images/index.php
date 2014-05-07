@@ -8,10 +8,9 @@ session_start();
 //ini_set('display_errors', TRUE);
 setlocale(LC_ALL, 'UTF8');
 
-global $oadbcon;
-$oadbcon = mysql_connect("localhost:3306","virtualtextiles","williammorris", TRUE) or die('Could not connect: ' . mysql_error());
-mysql_select_db("VTMaster", $oadbcon);
-mysql_query('set names "utf8"');
+$thisabspath = "/Users/virtualtextileproject/Sites/workingcopy";
+define("ABSPATH", dirname(__FILE__) . '/');
+include (ABSPATH . "../../includes/phpheader.php");
 
 
 header("Expires: Mon, 01 Jul 2003 00:00:00 GMT"); // Past date

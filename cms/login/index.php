@@ -1,4 +1,5 @@
-<?php $thisabspath = "/Users/virtualtextileproject/Sites/workingcopy";
+<?php /*user login modal*/
+$thisabspath = "/Users/virtualtextileproject/Sites/workingcopy";
 define("ABSPATH", dirname(__FILE__) . '/');
 include (ABSPATH . "../../includes/phpheader.php");
 header("Content-Type: text/html; charset=utf-8");
@@ -25,7 +26,9 @@ header("Pragma: no-cache");?>
 							<p class="h30">
 								<input type="submit" class="makebutton" value="login">
 							</p>
-							<?php /*?><p class="h30">
+							<?php /*
+							resolve this url and update as needed
+							?><p class="h30">
 								<label class="w70">remember?</label><input type="checkbox"
 									id="remember" name="remember" value="yes"><a
 									href="/account/password/forgot.php" class="right">my password?</a>

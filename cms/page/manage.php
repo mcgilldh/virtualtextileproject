@@ -1,4 +1,4 @@
-<?php
+<?php /*manage a page and its versions*/
 define("ABSPATH", dirname(__FILE__));
 include(ABSPATH."/../../includes/phpheader.php");
 header("Expires: Mon, 01 Jul 2003 00:00:00 GMT"); // Past date

@@ -1,24 +1,13 @@
 <?php //error_reporting(E_ALL);
 //ini_set('display_errors', '1');
-//General Housekeeping
-session_name("vtp");
-session_start();
 
-//error_reporting(E_ALL);
-//ini_set('display_errors', TRUE);
-setlocale(LC_ALL, 'UTF8');
-
-$thisabspath = "/Users/virtualtextileproject/Sites/workingcopy";
-define("ABSPATH", dirname(__FILE__) . '/');
-include (ABSPATH . "../../includes/phpheader.php");
-
+include ("/Users/virtualtextileproject/Sites/includes/phpheader.php");
 
 header("Expires: Mon, 01 Jul 2003 00:00:00 GMT"); // Past date
 header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 $docid=$_GET['id'];
-
 if(!empty($docid)){
-$getdoc=mysql_query("select * from IMG_detail where Textile_img_id=".$docid." limit 0,1");
+$getdoc=mysql_query("select * from IMG_detail where Textile_img_id=".$docid." limit 0,1",$oadbcon);
 if(mysql_num_rows($getdoc)){
 $getdocinfo=mysql_fetch_assoc($getdoc);
 

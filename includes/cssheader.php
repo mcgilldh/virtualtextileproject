@@ -11,6 +11,7 @@ include("globalvars.php");?>
   */?>
 <link href='<?php echo $cms_url; ?>/frame/css/fonts/didact_gothic/stylesheet.css' rel='stylesheet' type='text/css'>
 <link href='<?php echo $cms_url; ?>/frame/css/fonts/sorts_mills_goudy/stylesheet.css' rel='stylesheet' type='text/css'>
+<link href='<?php echo $cms_url; ?>/frame/css/fonts/batch_master/stylesheet.css' rel='stylesheet' type='text/css'>
 <link href="<?php echo $cms_url; ?>/frame/css/main.css" rel="stylesheet" type="text/css" />
 <?php /*
 <link href='http://fonts.googleapis.com/css?family=Didact+Gothic|Sorts+Mill+Goudy&subset=latin,latin-ext' rel='stylesheet' type='text/css'>

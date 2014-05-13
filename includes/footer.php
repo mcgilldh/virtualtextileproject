@@ -1,12 +1,8 @@
 <p class="clear-block"></p>
-<div id="likes" class="clear-block">
-	<div class="to-top p100">
-		<a href="#top"><img
-			src="<?php echo $cms_url;?>/frame/images/icons/up.png"
-			class="icon right" /> </a>
-	</div>
-</div>
 
+	<div class="to-top p100">
+		<a id="uptotop" href="#top">&nbsp; </a>
+	</div>
 
 </div>
 <!--endinner content-->
@@ -20,7 +16,6 @@
 <!--/middle-wrapper-->
 <div id="bottom-wrapper" class="clear-block">
 	<div id="footer" class="section wide">
-		<hr>
 		<!--start to columns--->
 		<div id="footercolumns" class="wrap-4-col column-wrapper clear-block">
 
@@ -51,6 +46,10 @@
 											Milner</a></li>
 									<li><a href="<?php echo $cms_url;?>/team/davoust/">Peter
 											Davoust</a></li>
+											<li><a href="<?php echo $cms_url;?>/team/jeidelman/">Jonathan Eidelman</a>
+							</li>
+							<li><a href="<?php echo $cms_url;?>/team/pcaussy/">Pamela Caussy</a>
+							</li>
 								</ul>
 							</li>
 							<li><a href="<?php echo $cms_url;?>/team/dragon_phoenix/">Dragon
@@ -94,8 +93,7 @@
 
 				<div id="block-menu-menu-explore-menu"
 					class="block block-menu clear-block">
-					<a class="menuheader" href="<?php echo $cms_url;?>/collections/">The
-						Collections</a>
+					<a class="menuheader" href="<?php echo $cms_url;?>/collections/">Collections</a>
 
 					<div class="content clear-block">
 						<ul class="menu">
@@ -157,12 +155,16 @@
 
 		</div>
 		<!-- /footer-column-wrap -->
+			<div id="socialtags" class="clear-block">
+			<a href="https://www.facebook.com/virtual-textile" target="_blank"><img src="/frame/images/icons/facebook_icon.png" class="largeicon"></a><img src="/frame/images/icons/pinterest_icon.png" class="largeicon"><img src="/frame/images/icons/twitter_icon.png" class="largeicon"><img src="/frame/images/icons/googleplus_icon.png" class="largeicon">
+</div>
 		<div id="credit-wrap" class="clear-block">
 			<p id="site-info">
-				For more information on the project contact <a href="mailto:info@virtualtextiles.org">info@virtualtextiles.org</a>.<br />
-				<br />&copy; 2013
+				For more information on the project contact <a href="mailto:info@virtualtextileproject.org">info@virtualtextileproject.org</a>.<br />
+				<br />&copy; <?php print date('Y');?>
 			</p>
 		</div>
+
 	</div>
 </div>
 <!--/bottom-wrapper-->

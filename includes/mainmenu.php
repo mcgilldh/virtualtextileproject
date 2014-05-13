@@ -36,6 +36,10 @@
 							<li><a href="<?php echo $cms_url;?>/team/pdavoust/">Peter
 									Davoust</a>
 							</li>
+							<li><a href="<?php echo $cms_url;?>/team/jeidelman/">Jonathan Eidelman</a>
+							</li>
+							<li><a href="<?php echo $cms_url;?>/team/pcaussy/">Pamela Caussy</a>
+							</li>
 							</ul>
 							</li>
 							<li><a href="<?php echo $cms_url;?>/team/dragon_phoenix/">Dragon
@@ -49,7 +53,7 @@
 					</div>
 				</div></li>
 			<li><a href="<?php echo $cms_url;?>/collections/"
-				title="The Collections">the collections</a>
+				title="Collections">collections</a>
 				<div class="dropdown_2columns">
 					<div class="col_full firstcolumn">
 						<ul class="clear-block">

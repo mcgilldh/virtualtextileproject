@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'batch_master';
+    src: url('batch-icons-webfont.eot');
+    src: url('batch-icons-webfont.eot?#iefix') format('embedded-opentype'),
+         url('batch-icons-webfont.woff') format('woff'),
+         url('batch-icons-webfont.ttf') format('truetype'),
+         url('batch-icons-webfont.svg#batch_master') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+@font-face {
+font-family: 'batch_master';
+src: url('batch-icons-webfont.eot?#iefix') format('embedded-opentype'),
+         url('batch-icons-webfont.svg#batch_master') format('svg'),
+         url('batch-icons-webfont.woff') format('woff');
+}
+}

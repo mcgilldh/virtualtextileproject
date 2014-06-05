@@ -11,28 +11,31 @@ header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 header("Content-Type: text/html; charset=utf-8");
 
-if(is_numeric($_POST['id'])){
-	$isgallery=false;
-	$textileid=$_POST['id'];
-	$isotopesize=" width2 height2 ";
-	$isotopelink="/images/?id=";
-	$findimage="select Textile_img_id from Textile_instance inner join IMG_hdr on IMG_hdr.Textile_inst_id=Textile_instance.Textile_inst_id inner join IMG_detail on IMG_hdr.IMG_hdr_id=IMG_detail.Textile_img_hdr_id where Textile_id=".$textileid." and Img_type_cd='thumbnail'";
-}else{
+if($_POST['id']=='all'){
 	$isgallery=true;
 	$isotopesize="";
 	$isotopelink="/textiles/";
 	$findimage="select Textile_img_id,IMG_hdr.VT_tracking from Textile_instance inner join IMG_hdr on IMG_hdr.Textile_inst_id=Textile_instance.Textile_inst_id inner join IMG_detail on IMG_hdr.IMG_hdr_id=IMG_detail.Textile_img_hdr_id where Img_type_cd='thumbnail' order by rand()";
-}
+
+}else{
+
+	$isgallery=false;
+	$textileid=$_POST['id'];
+	$isotopesize=" width2 height2 ";
+	$isotopelink="/cms/images/?textile=";
+	$findimage="select Textile_img_id from IMG_detail where VT_tracking like cast('".$textileid."%' as char(30)) and Img_type_cd='thumbnail'";
+
+	}
 if($_POST['l']){
 	$findimage=$findimage." limit 0,".$_POST['l'];
 }
 $grabinstanceimgs=mysql_query($findimage,$oadbcon);
 	if(mysql_num_rows($grabinstanceimgs)){
 	while($instanceimg=mysql_fetch_assoc($grabinstanceimgs)){
-	if($instanceimg['VT_tracking']){
-		$findid=$instanceimg['VT_tracking'];
+	if($_POST['id']=='all'){
+		$findvttracking=$instanceimg['VT_tracking'];
 	}else{
-		$findid=$instanceimg['Textile_img_id'];
+		$findvttracking=$_POST['id'];
 	}?>
 <div id="textileimg<?php print $instanceimg['Textile_img_id'];?>div"
 	data-id="textileimg<?php print $instanceimg['Textile_img_id'];?>"
@@ -40,7 +43,7 @@ $grabinstanceimgs=mysql_query($findimage,$oadbcon);
 	data-sortdate="<?php print $thisdate;?>"
 	data-sortinfo="<?php print $images[$image];?>"
 	data-category="thumbnail"><span id="textileimg<?php print $instanceimg['Textile_img_id'];?>item"
-		class="name"><a href="<?php print $isotopelink.$findid;?>"><img
+		class="name"><a href="<?php print $isotopelink.$findvttracking;?>"><img
 		src="http://www.virtualtextileproject.org/images/?id=<?php print $instanceimg['Textile_img_id'];?>"></a></span>
 </div>
 <?php }

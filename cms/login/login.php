@@ -54,6 +54,7 @@ if (!empty($_POST['user']) && !empty($_POST['password'])) {
 			//Assign variables for easy access
 			$userstr=$row['userid'];
 			$passwordstr=$row['password'];
+			$agreestr=$row['agree'];
 			$profilestr=$row['profile'];
 			$hashidstr=$row['hashid'];
 			$userinterview=$row['userinterview'];
@@ -73,6 +74,7 @@ if (!empty($_POST['user']) && !empty($_POST['password'])) {
 					$_SESSION['password']=$passwordstr;
 					$_SESSION['hash']=$hashidstr;
 					$_SESSION['profile']=$profilestr;
+					$_SESSION['agree']=$agreestr;
 
 					/*==== Create User-folders====
 					if($_SESSION['user']){

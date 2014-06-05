@@ -27,6 +27,11 @@ THE SOFTWARE.
  **********************************************************/
 include("includes/phpheader.php");
 
+//Set up error reporting
+//ini_set('display_errors', 'On');
+//error_reporting(E_ALL);
+
+
 /*find content_id for makepage($id)
 * if declared in query string, use that above all else*/
 if (! empty($_GET['page'])){
@@ -91,8 +96,8 @@ if($trap){
 		$findpage=trim($thisurl,"/");
 		//transform VT_tracking into more useful field
 		if($trap=='textiles'){
-			$fixedvttracking=str_replace("-","%",$findpage);
-			$grabtextile=mysql_query("select * from Textile where VT_tracking like '".$fixedvttracking."' limit 0,1",$oadbcon);
+			$vttracking=$findpage;
+			$grabtextile=mysql_query("select * from Textile where VT_tracking=cast('".$vttracking."' as char(30)) limit 0,1",$oadbcon);
 			if(mysql_num_rows($grabtextile)){
 				$thistextile=mysql_fetch_assoc($grabtextile);
 				$findid=$thistextile['Textile_id'];
@@ -213,8 +218,17 @@ if($thispageinfo ['contentjs']) {?>
 	print eval($thispageinfo['content']);?>
 
 <?php if (empty($thispageinfo)) { ?>
-	<h2>404: Page Not Found</h2>
+	<div id="notFound">Warning: You do not have access to the page that you requested.</div>
+	<h1>There was an error. Redirecting to home page...</h1>
+
+	<script language="javascript" charset="utf-8">
+
+		setTimeout(function(){window.location.replace("http://www.virtualtextileproject.org");},3000);
+
+	</script>
 <?php
+
+
 }?>
 <?php include($thisabspath."/includes/footer.php");
 //rem'd as per discussion;

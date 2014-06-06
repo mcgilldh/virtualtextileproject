@@ -92,6 +92,9 @@ $('#collectioncontainer'+id).isotope('insert', $newItems);
 $('#collectioncontainer'+id).isotope({ filter: '' });
 $('#collectioncontainer'+id).isotope('reLayout');
 //$('#collectioncontainer'+id).css({'overflow' : 'auto','height':'500px'});
+$('.popmodal').magnificPopup({
+	  type: 'ajax'
+});
 }
 
 function updatewithterm(i,n){
@@ -280,5 +283,8 @@ var $optionSets = $('#options .option-set'),
   });
 	//$('#collectioncontainer'+id).css({'overflow' : 'auto','height':'500px'});
 	//$('#collectioncontainer'+id).jScrollPane({showArrows: true,verticalGutter: 30,verticalDragMinHeight: 30,verticalDragMaxHeight: 60});
+  $('.popmodal').magnificPopup({
+	  type: 'ajax'
+});
 }
 </script>

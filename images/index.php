@@ -21,14 +21,17 @@ if(!empty($docid)){
 	$getdoc=mysql_query("select * from IMG_detail where Textile_img_id=".$docid." limit 0,1",$oadbcon);
 	if(mysql_num_rows($getdoc)){
 		$getdocinfo=mysql_fetch_assoc($getdoc);
+		header("Content-type: image/jpeg");
 		if($getdocinfo['Img_type_cd']=='Thumbnail'){
+			$auth=true;
+			header('Content-Disposition: inline; filename="'.$getdocinfo['VT_Tracking'].'.jpg"');
+		}else{
 			$auth=true;
 			if($_GET['d']=='y'){
 				header('Content-Disposition: attachment; filename="'.$getdocinfo['VT_Tracking'].'.jpg"');
 			}else{
 				header('Content-Disposition: inline; filename="'.$getdocinfo['VT_Tracking'].'.jpg"');
 			}
-			header("Content-type: image/jpeg");
 		}
 
 		if($auth){

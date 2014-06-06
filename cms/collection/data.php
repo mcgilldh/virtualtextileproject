@@ -48,6 +48,7 @@ $grabinstanceimgs=mysql_query($findimage,$oadbcon);
 		$findvttracking=$instanceimg['VT_tracking'];
 	}else{
 		$findvttracking=$_POST['id'];
+		$thisisotopelink=$isotopelink;
 	}?>
 <div id="textileimg<?php print $instanceimg['Textile_img_id'];?>div"
 	data-id="textileimg<?php print $instanceimg['Textile_img_id'];?>"
@@ -55,7 +56,7 @@ $grabinstanceimgs=mysql_query($findimage,$oadbcon);
 	data-sortdate="<?php print $thisdate;?>"
 	data-sortinfo="<?php print $images[$image];?>"
 	data-category="thumbnail"><span id="textileimg<?php print $instanceimg['Textile_img_id'];?>item"
-		class="name"><a href="<?php print $thisisotopelink.$findvttracking;?>"><img
+		class="name"><a href="<?php print $thisisotopelink.$findvttracking;?>" class="popmodal"><img
 		src="http://www.virtualtextileproject.org/images/?id=<?php print $instanceimg['Textile_img_id'];?>"></a></span>
 </div>
 <?php }

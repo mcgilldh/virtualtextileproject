@@ -92,6 +92,22 @@ if($trap){
 			$thispostrange[1]=$date."-12-31 23:59:59";
 		}
 		//for textiles using VT_Tracking
+	}elseif($trap=='collections'){
+		$thisurl=str_replace("collections","",$thisurl);
+		$findpage=trim($thisurl,"/");
+		if(strpos($findpage,"/")>0){
+			$test="hi";
+			$findvttracking=explode("/",$findpage);
+			$findpage=$findvttracking[0];
+			$thiscollection=grabinfo('cms_collections','collectionurl',$findpage,'1');
+			$findtextile=$findvttracking[1];
+			$grabtextile=mysql_query("select * from Textile where VT_tracking=cast('".$findtextile."' as char(30)) limit 0,1",$oadbcon);
+			if(mysql_num_rows($grabtextile)){
+				$thistextile=mysql_fetch_assoc($grabtextile);
+				$findid=$thistextile['Textile_id'];
+			}
+		}
+
 	}elseif(preg_match("/\/".$trap."\/[A-Z]{4}[0-9]{2}[A-Z]{1}[0-9]{4}-[A-Z]/", $URI)){
 		$findpage=trim($thisurl,"/");
 		//transform VT_tracking into more useful field

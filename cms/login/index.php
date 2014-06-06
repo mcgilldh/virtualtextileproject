@@ -1,12 +1,11 @@
 <?php /*user login modal*/
-$thisabspath = "/Users/virtualtextileproject/Sites/workingcopy";
+$thisabspath = "/Users/virtualtextileproject/Sites";
 define("ABSPATH", dirname(__FILE__) . '/');
 include (ABSPATH . "../../includes/phpheader.php");
+
+header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 header("Content-Type: text/html; charset=utf-8");
-header("Expires: Mon, 01 Jul 2003 00:00:00 GMT");
-// Past date
-header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-header("Cache-Control: no-cache, must-revalidate");
 // HTTP/1.1
 header("Pragma: no-cache");?>
 <div id="modalcontent" class="w300">
@@ -26,13 +25,11 @@ header("Pragma: no-cache");?>
 							<p class="h30">
 								<input type="submit" class="makebutton" value="login">
 							</p>
-							<?php /*
-							resolve this url and update as needed
-							?><p class="h30">
+							<p class="h30">
 								<label class="w70">remember?</label><input type="checkbox"
 									id="remember" name="remember" value="yes"><a
-									href="/account/password/forgot.php" class="right">my password?</a>
-							</p><?php */?>
+									href="/account/forgot/" class="right">my password?</a>
+							</p>
 						</form>
 						<script>
 						$('#whereurl').val(document.URL);

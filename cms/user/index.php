@@ -1,6 +1,7 @@
-<?php $thisabspath = "/Users/virtualtextileproject/Sites/workingcopy";
+<?php $thisabspath = "/Users/virtualtextileproject/Sites";
 define("ABSPATH", dirname(__FILE__) . '/');
 include (ABSPATH . "../../includes/phpheader.php");
+
 header("Content-Type: text/html; charset=utf-8");
 header("Expires: Mon, 01 Jul 2003 00:00:00 GMT");
 // Past date

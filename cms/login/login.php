@@ -1,6 +1,10 @@
-<?php $thisabspath = "/Users/virtualtextileproject/Sites/workingcopy";
+<?php $thisabspath = "/Users/virtualtextileproject/Sites";
 define("ABSPATH", dirname(__FILE__) . '/');
 include (ABSPATH . "../../includes/phpheader.php");
+
+header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+header("Content-Type: text/html; charset=utf-8");
 //print "hi";
 //print_r($_POST);
 if($_SESSION['user']) {
@@ -71,7 +75,6 @@ if (!empty($_POST['user']) && !empty($_POST['password'])) {
 				$_SESSION['currentpage']=$_POST['whereurl'];
 					//Store the user's information in this session
 					$_SESSION['user']=$userstr;
-					$_SESSION['password']=$passwordstr;
 					$_SESSION['hash']=$hashidstr;
 					$_SESSION['profile']=$profilestr;
 					$_SESSION['agree']=$agreestr;

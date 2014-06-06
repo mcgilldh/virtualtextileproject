@@ -1,4 +1,4 @@
-<?php $thisabspath = "/Users/virtualtextileproject/Sites/workingcopy";
+<?php $thisabspath = "/Users/virtualtextileproject/Sites";
 define("ABSPATH", dirname(__FILE__) . '/');
 include (ABSPATH . "../../includes/phpheader.php");
 if($_SESSION['user']){

@@ -40,7 +40,7 @@ function resetpwd(){
 					alert('Password Reset!');
 				}
 			});
-			$.nmTop().close();
+	$.magnificPopup.close();
 }
 </script>
 <?php } ?>

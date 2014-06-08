@@ -74,6 +74,7 @@
 			<li class="menuitem_nodrop"><a href="<?php echo $cms_url;?>/blog/"
 				title="Our Blog">blog</a>
 			</li>
+			<?php if($_SESSION['user']){?>
 			<li><a href="<?php echo $cms_url;?>/community/" class="menuitem_drop"
 				title="community">community</a>
 				<div class="dropdown_1column">
@@ -83,7 +84,13 @@
 						</ul>
 					</div>
 				</div></li>
-				<?php /*?><li><a href="<?php echo $cms_url;?>/audiences/"
+				<?php }else{?>
+					<li class="menuitem_nodrop"><a href="<?php echo $cms_url;?>/join/"
+				title="Join!">join</a>
+			</li>
+		<?php 	}
+
+				/*?><li><a href="<?php echo $cms_url;?>/audiences/"
 				title="About the Virtual Textiles Project">audiences</a>
 			<div class="dropdown_1column">
 					<div class="col_full firstcolumn">

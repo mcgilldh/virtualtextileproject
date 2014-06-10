@@ -23,15 +23,7 @@
 				<div id="block-menu-menu-enter-menu"
 					class="block block-menu clear-block">
 					<a href="<?php echo $cms_url;?>/about/" class="menuheader">About</a>
-					<div class="content clear-block">
-						<ul class="menu">
-						   <li><a href="<?php echo $cms_url;?>/about/methodology/">Methodology</a>
-							</li>
-							<li><a href="<?php echo $cms_url;?>/about#project">The Project</a>
-							</li>
-							<li><a href="<?php echo $cms_url;?>/about#goals">Our Goals</a></li>
-						</ul>
-					</div>
+
 					<a href="<?php echo $cms_url;?>/team/" class="menuheader">Team</a>
 					<div class="content clear-block">
 						<ul class="menu">
@@ -44,12 +36,10 @@
 											Sinclair</a></li>
 									<li><a href="<?php echo $cms_url;?>/team/milner/">Matthew
 											Milner</a></li>
-									<li><a href="<?php echo $cms_url;?>/team/davoust/">Peter
+									<li><a href="<?php echo $cms_url;?>/team/jeidelman/">Jonathan Eidelman</a>
+							</li>
+							<li><a href="<?php echo $cms_url;?>/team/davoust/">Peter
 											Davoust</a></li>
-											<li><a href="<?php echo $cms_url;?>/team/jeidelman/">Jonathan Eidelman</a>
-							</li>
-							<li><a href="<?php echo $cms_url;?>/team/pcaussy/">Pamela Caussy</a>
-							</li>
 								</ul>
 							</li>
 							<li><a href="<?php echo $cms_url;?>/team/dragon_phoenix/">Dragon
@@ -78,9 +68,6 @@
 									Museum of Canada</a></li>
 							<li><a href="<?php echo $cms_url;?>/partners/mccord/">McCord
 									Museum of Canadian History</a></li>
-							<li><a href="<?php echo $cms_url;?>/partners/mccann_robinson/">Janet
-									Ruth McCann Robinson Collection</a></li>
-
 							<li>&nbsp;</li>
 							<li><a href="<?php echo $cms_url;?>/partners/new/">Interested in
 									being a partner?</a></li>
@@ -99,15 +86,17 @@
 						<ul class="menu">
 							<li><a href="<?php echo $cms_url;?>/search/">Search</a>
 							</li>
-							<li><a href="<?php echo $cms_url;?>/textiles/">Textiles</a>
-							</li>
+							<?php $graballcollections=mysql_query("select * from Textile_owner order by Own_nm asc",$oadbcon);
+if(mysql_num_rows($graballcollections)){
+while($collection=mysql_fetch_assoc($graballcollections)){
+$thiscollection=grabinfo('cms_collections','collectionid',$collection['Own_id'],'1');?>
+<li><a href="/collections/<?php print $thiscollection['collectionurl'];?>"><?php print $collection['Own_nm'];?></a></li><?php }
+}?>
 						</ul>
 					</div>
 					<div class="content clear-block">
 						<ul class="menu">
 							<li><a href="<?php echo $cms_url;?>/policies/">Policies</a>
-
-							<li><a href="<?php echo $cms_url;?>/policies#copyright">Copyright</a>
 							</li>
 						</ul>
 					</div>
@@ -145,6 +134,7 @@
 
 					<div class="content clear-block">
 						<ul class="menu">
+						<li><a href="<?php echo $cms_url;?>/join/">Join</a></li>
 							<li><a href="<?php echo $cms_url;?>/community/gallery/">Gallery</a></li>
 						</ul>
 					</div>

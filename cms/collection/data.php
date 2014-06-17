@@ -14,21 +14,18 @@ header("Content-Type: text/html; charset=utf-8");
 if($_POST['id']=='all'){
 	//all textiles
 	$isgallery=true;
-	$imageonly=false;
 	$isotopesize="";
 	$isotopelink="/collections/";
 	$findimage="select Textile_img_id,IMG_hdr.VT_tracking,Textile_instance.Own_id from Textile_instance inner join IMG_hdr on IMG_hdr.Textile_inst_id=Textile_instance.Textile_inst_id inner join IMG_detail on IMG_hdr.IMG_hdr_id=IMG_detail.Textile_img_hdr_id where Img_type_cd='thumbnail' order by rand()";
 }elseif(is_numeric($_POST['id'])){
 	//grab by specific collection - own_id
 		$isgallery=true;
-		$imageonly=false;
 		$isotopesize="";
 		$isotopelink="/collections/";
 		$collectionid=$_POST['id'];
 		$findimage="select Textile_img_id,IMG_hdr.VT_tracking,Textile_instance.Own_id from Textile_instance inner join IMG_hdr on IMG_hdr.Textile_inst_id=Textile_instance.Textile_inst_id inner join IMG_detail on IMG_hdr.IMG_hdr_id=IMG_detail.Textile_img_hdr_id where Img_type_cd='thumbnail' and Own_id=".$_POST['id']." order by rand()";
 }else{
 	$isgallery=false;
-	$imageonly=true;
 	$textileid=$_POST['id'];
 	$isotopesize=" width2 height2 ";
 	$isotopelink="/cms/images/?textile=";
@@ -59,7 +56,7 @@ $grabinstanceimgs=mysql_query($findimage,$oadbcon);
 	data-sortdate="<?php print $thisdate;?>"
 	data-sortinfo="<?php print $images[$image];?>"
 	data-category="thumbnail"><span id="textileimg<?php print $instanceimg['Textile_img_id'];?>item"
-		class="name"><a href="<?php print $thisisotopelink.$findvttracking;?>" <?php if($imageonly){?>class="popmodal"<?php }?>><img
+		class="name"><a href="<?php print $thisisotopelink.$findvttracking;?>" class="popmodal"><img
 		src="http://www.virtualtextileproject.org/images/?id=<?php print $instanceimg['Textile_img_id'];?>"></a></span>
 </div>
 <?php }

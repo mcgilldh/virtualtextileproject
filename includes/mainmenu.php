@@ -6,6 +6,15 @@
 			</li>
 			<li class="menuitem_nodrop"><a href="<?php echo $cms_url;?>/about/"
 				title="About the Virtual Textiles Project">about</a>
+				<div class="dropdown_1column">
+					<div class="col_full firstcolumn">
+						<ul class="clear-block">
+						   <li><!--<a href="<?php echo $cms_url;?>/about/methodology/">Methodology</a>-->
+							</li>
+							<li><a href="<?php echo $cms_url;?>/about#project">The Project</a>
+							</li>
+							<li><a href="<?php echo $cms_url;?>/about#goals">Our Goals</a></li>
+						</ul>
 			</li>
 			<li><a href="<?php echo $cms_url;?>/team/"
 				title="Our Team">team</a>
@@ -24,10 +33,12 @@
 							<li><a href="<?php echo $cms_url;?>/team/mmilner/">Matthew
 									Milner</a>
 							</li>
-							<li><a href="<?php echo $cms_url;?>/team/jeidelman/">Jonathan Eidelman</a>
-							</li>
 							<li><a href="<?php echo $cms_url;?>/team/pdavoust/">Peter
 									Davoust</a>
+							</li>
+							<li><a href="<?php echo $cms_url;?>/team/jeidelman/">Jonathan Eidelman</a>
+							</li>
+							<li><a href="<?php echo $cms_url;?>/team/pcaussy/">Pamela Caussy</a>
 							</li>
 							</ul>
 							</li>
@@ -41,31 +52,28 @@
 						</ul>
 					</div>
 				</div></li>
-			<li><a href="<?php echo $cms_url;?>/collections/"
+			<!-- <li><a href="<?php echo $cms_url;?>/collections/"
 				title="Collections">collections</a>
 				<div class="dropdown_2columns">
 					<div class="col_full firstcolumn">
 						<ul class="clear-block">
 							<li><a href="<?php echo $cms_url;?>/search/">Search</a>
 							</li>
-							<?php $graballcollections=mysql_query("select * from Textile_owner order by Own_nm asc",$oadbcon);
-if(mysql_num_rows($graballcollections)){
-while($collection=mysql_fetch_assoc($graballcollections)){
-$thiscollection=grabinfo('cms_collections','collectionid',$collection['Own_id'],'1');?>
-<li><a href="/collections/<?php print $thiscollection['collectionurl'];?>"><?php print $collection['Own_nm'];?></a></li><?php }
-}?>
+							<li><a href="<?php echo $cms_url;?>/textiles/">Textiles</a>
+							</li>
 							<li>&nbsp;</li>
 							<li><a href="<?php echo $cms_url;?>/partners/">Partners</a></li>
 							<li><a href="<?php echo $cms_url;?>/partners/new/">Interested in
 									being a partner?</a></li>
-							<li><a href="<?php echo $cms_url;?>/policies/">Policies</a></li>
+							<li><a href="<?php echo $cms_url;?>/policies/">Policies</a>
+							<li><a href="<?php echo $cms_url;?>/policies#copyright">Copyright</a>
+							</li>
 						</ul>
 					</div>
 				</div></li>
 			<li class="menuitem_nodrop"><a href="<?php echo $cms_url;?>/blog/"
 				title="Our Blog">blog</a>
 			</li>
-			<?php if($_SESSION['user']){?>
 			<li><a href="<?php echo $cms_url;?>/community/" class="menuitem_drop"
 				title="community">community</a>
 				<div class="dropdown_1column">
@@ -75,13 +83,7 @@ $thiscollection=grabinfo('cms_collections','collectionid',$collection['Own_id'],
 						</ul>
 					</div>
 				</div></li>
-				<?php }else{?>
-					<li class="menuitem_nodrop"><a href="<?php echo $cms_url;?>/join/"
-				title="Join!">join</a>
-			</li>
-		<?php 	}
-
-				/*?><li><a href="<?php echo $cms_url;?>/audiences/"
+				<?php /*?><li><a href="<?php echo $cms_url;?>/audiences/"
 				title="About the Virtual Textiles Project">audiences</a>
 			<div class="dropdown_1column">
 					<div class="col_full firstcolumn">
@@ -104,7 +106,7 @@ $thiscollection=grabinfo('cms_collections','collectionid',$collection['Own_id'],
 						</ul>
 					</div>
 				</div></li>
-				<?php */?>
+				<?php */?> -->
 			<li class="menuitem_right <?php if (empty ($_SESSION['user'])) {?>menuitem_nodrop"><a href="/cms/login/" class="popmodal">login</a><?php
 } else {
 ?>"><span><?php echo $_SESSION['user']; ?>

@@ -4,7 +4,7 @@
 // *******GLOBAL VARIABLE DEFINITIONS*********
 //
 //
-$cms_domain="www.virtualtextileproject.org";
+$cms_domain="test.virtual-textile.com";
 $cms_url="http://".$cms_domain;
 /*
 These are defined in cms_vre
